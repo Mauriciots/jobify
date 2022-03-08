@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import main from '../assets/images/main.svg';
 import Wrapper from '../assets/wrappers/LandingPage'
 import { Logo } from '../components';
@@ -15,7 +16,7 @@ const Landing = () => {
             I'm baby kale chips ramps put a bird on it waistcoat. Forage selvage organic vape, 
             paleo wolf microdosing plaid 90's irony marfa distillery pabst next level gastropub.
           </p>
-          <button className="btn btn-hero">Login/Register</button>
+          <Link to="/register" className="btn btn-hero">Login/Register</Link>
         </div>
         <img src={main} alt="Job Hunt" className="img main-img" />
       </div>
