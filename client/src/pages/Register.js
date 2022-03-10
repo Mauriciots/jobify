@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Wrapper from '../assets/wrappers/RegisterPage'
-import { FormRow, Logo } from '../components';
+import { Alert, FormRow, Logo } from '../components';
+import { useAppContext } from '../context/appContext';
 
 const initialState = {
   name: '',
@@ -11,6 +12,7 @@ const initialState = {
 
 const Register = () => {
   const [values, setValues] = useState(initialState);
+  const { showAlert, displayAlert } = useAppContext();
 
   const handleInputChange = (e) => {
     setValues((prevState) => ({
@@ -21,6 +23,11 @@ const Register = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    const { name, email, password, isMember } = values;
+    if (!email || !password || (!isMember && !name)) {
+      displayAlert();
+      return;
+    }
     console.log(e.target);
   }
 
@@ -33,7 +40,7 @@ const Register = () => {
       <form className="form" onSubmit={handleFormSubmit}>
         <Logo />
         <h3>{values.isMember ? 'Login' : 'Register'}</h3>
-
+        {showAlert && <Alert />}
         {!values.isMember && (
           <FormRow
             type="text"
