@@ -1,0 +1,5 @@
+http://localhost:5000/api/v1/jobs/
+
+###
+
+POST http://localhost:5000/api/v1/auth/register/
